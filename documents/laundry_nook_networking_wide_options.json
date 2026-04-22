@@ -1,0 +1,161 @@
+{
+  "source_plan_dimensions": {
+    "nook_width_nominal_mm": 1040,
+    "user_estimate_width_mm": "~1070; calculations retain 1040 nominal plan dimension as the safe controlling value",
+    "room_depth_mm": 1650,
+    "ceiling_height_mm": 2590,
+    "recommended_top_clearance_mm": [
+      150,
+      200
+    ],
+    "service_gap_between_cabinet_and_trolley_mm": 50,
+    "recommended_trolley_width_mm": "900-980",
+    "recommended_trolley_depth_mm": "450 sideways tower orientation; 600 max general; 650-750 only if front-facing full tower is accepted"
+  },
+  "cabinet_options": [
+    {
+      "id": "A1",
+      "name": "6U cheap/common wall cabinet",
+      "u": 6,
+      "w": 600,
+      "d": 450,
+      "h": 375,
+      "source": "Common 600x450x375-style 6U wall cabinet",
+      "side_clear_each_nom": 220.0,
+      "clear_depth": 1200,
+      "bottom_at_topclear_150": 2065,
+      "cart_max_at_topclear_150_gap50": 2015,
+      "bottom_at_topclear_200": 2015,
+      "cart_max_at_topclear_200_gap50": 1965
+    },
+    {
+      "id": "A2",
+      "name": "6U wider switch-depth cabinet",
+      "u": 6,
+      "w": 752,
+      "d": 551,
+      "h": 370,
+      "source": "Eaton/Tripp Lite SRW6UDPVRT class",
+      "side_clear_each_nom": 144.0,
+      "clear_depth": 1099,
+      "bottom_at_topclear_150": 2070,
+      "cart_max_at_topclear_150_gap50": 2020,
+      "bottom_at_topclear_200": 2020,
+      "cart_max_at_topclear_200_gap50": 1970
+    },
+    {
+      "id": "A3",
+      "name": "6U custom wide envelope",
+      "u": 6,
+      "w": 800,
+      "d": 550,
+      "h": 370,
+      "source": "Custom/AliExpress/Alibaba target envelope",
+      "side_clear_each_nom": 120.0,
+      "clear_depth": 1100,
+      "bottom_at_topclear_150": 2070,
+      "cart_max_at_topclear_150_gap50": 2020,
+      "bottom_at_topclear_200": 2020,
+      "cart_max_at_topclear_200_gap50": 1970
+    },
+    {
+      "id": "B1",
+      "name": "9U cheap/common wall cabinet",
+      "u": 9,
+      "w": 600,
+      "d": 450,
+      "h": 510,
+      "source": "Common 600x450x510-style 9U wall cabinet",
+      "side_clear_each_nom": 220.0,
+      "clear_depth": 1200,
+      "bottom_at_topclear_150": 1930,
+      "cart_max_at_topclear_150_gap50": 1880,
+      "bottom_at_topclear_200": 1880,
+      "cart_max_at_topclear_200_gap50": 1830
+    },
+    {
+      "id": "B2",
+      "name": "9U wider switch-depth cabinet",
+      "u": 9,
+      "w": 752,
+      "d": 551,
+      "h": 504,
+      "source": "Eaton/Tripp Lite SRW9UDPVRT class",
+      "side_clear_each_nom": 144.0,
+      "clear_depth": 1099,
+      "bottom_at_topclear_150": 1936,
+      "cart_max_at_topclear_150_gap50": 1886,
+      "bottom_at_topclear_200": 1886,
+      "cart_max_at_topclear_200_gap50": 1836
+    },
+    {
+      "id": "B3",
+      "name": "9U custom wide envelope",
+      "u": 9,
+      "w": 800,
+      "d": 550,
+      "h": 510,
+      "source": "Custom/AliExpress/Alibaba target envelope",
+      "side_clear_each_nom": 120.0,
+      "clear_depth": 1100,
+      "bottom_at_topclear_150": 1930,
+      "cart_max_at_topclear_150_gap50": 1880,
+      "bottom_at_topclear_200": 1880,
+      "cart_max_at_topclear_200_gap50": 1830
+    },
+    {
+      "id": "C1",
+      "name": "12U/12RU 508-600D wall cabinet",
+      "u": 12,
+      "w": 600,
+      "d": 508,
+      "h": 640,
+      "source": "Typical 12U wall cabinet envelope",
+      "side_clear_each_nom": 220.0,
+      "clear_depth": 1142,
+      "bottom_at_topclear_150": 1800,
+      "cart_max_at_topclear_150_gap50": 1750,
+      "bottom_at_topclear_200": 1750,
+      "cart_max_at_topclear_200_gap50": 1700
+    },
+    {
+      "id": "C2",
+      "name": "12U deeper switch-depth cabinet",
+      "u": 12,
+      "w": 600,
+      "d": 563,
+      "h": 637,
+      "source": "Eaton/Tripp Lite SRW12UDP class",
+      "side_clear_each_nom": 220.0,
+      "clear_depth": 1087,
+      "bottom_at_topclear_150": 1803,
+      "cart_max_at_topclear_150_gap50": 1753,
+      "bottom_at_topclear_200": 1753,
+      "cart_max_at_topclear_200_gap50": 1703
+    }
+  ],
+  "tower_reference_envelopes_mm": [
+    {
+      "case": "Corsair 7000D Airflow full tower",
+      "depth_length": 550,
+      "width": 248,
+      "height": 600
+    },
+    {
+      "case": "Fractal Define 7 XL",
+      "depth_length": 604,
+      "width": 240,
+      "height": 566
+    },
+    {
+      "case": "Large extreme full tower e.g. HAF 700 class",
+      "depth_length": 666,
+      "width": 291,
+      "height": 626
+    }
+  ],
+  "tower_orientation_rules": {
+    "front_facing_room": "Cart depth = tower depth/length + 80-120 rear cable clearance. Expect 630-790 mm.",
+    "sideways": "Cart depth = tower width + 80-120 side/rear service allowance. Expect 340-420 mm. Wall width consumed = tower depth/length."
+  }
+}
