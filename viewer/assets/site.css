@@ -100,8 +100,20 @@ select {
   padding: var(--top-offset) 0 var(--bottom-offset);
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .topbar,
-.dashboard,
+.control-panel,
 .browser-panel,
 .viewer-panel {
   position: relative;
@@ -119,6 +131,12 @@ select {
   padding: 1rem 1.2rem;
   border-radius: 0 0 var(--radius-lg) var(--radius-lg);
   border-top: 0;
+}
+
+.brand-lockup,
+.header-search,
+.topbar-actions {
+  min-width: 0;
 }
 
 .brand-lockup h1,
@@ -160,6 +178,14 @@ select {
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 0.75rem;
+}
+
+.header-search {
+  flex: 1 1 28rem;
+  display: grid;
+  gap: 0.45rem;
+  max-width: 34rem;
+  align-self: center;
 }
 
 .button {
@@ -212,13 +238,22 @@ select {
   margin-top: 1rem;
 }
 
-.dashboard {
-  grid-column: 1 / -1;
+.control-panel {
+  position: fixed;
+  z-index: 35;
+  inset: 0 auto 0 0;
+  width: min(30rem, calc(100vw - 1rem));
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+  grid-template-rows: auto auto auto minmax(0, 1fr);
   gap: 1rem;
   padding: 1.15rem;
-  border-radius: var(--radius-lg);
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  transform: translateX(-105%);
+  transition: transform 180ms ease;
+}
+
+body.controls-open .control-panel {
+  transform: translateX(0);
 }
 
 .dashboard-hero {
@@ -235,27 +270,13 @@ select {
   max-width: 16ch;
 }
 
-.search-card {
-  display: grid;
-  gap: 0.75rem;
-  padding: 1rem;
-  border-radius: var(--radius-md);
-  background: var(--panel-strong);
-  border: 1px solid rgba(31, 43, 51, 0.1);
-}
-
-.search-label {
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
 .search-box {
   position: relative;
 }
 
 .search-box input {
   width: 100%;
-  min-height: 52px;
+  min-height: 48px;
   padding: 0 1rem;
   border: 1px solid rgba(31, 43, 51, 0.16);
   border-radius: 18px;
@@ -301,7 +322,6 @@ select {
 }
 
 .recent-panel {
-  grid-column: 1 / -1;
   display: grid;
   gap: 0.85rem;
 }
@@ -358,8 +378,10 @@ select {
   position: sticky;
   top: 1rem;
   display: grid;
+  grid-template-rows: auto auto auto minmax(0, 1fr);
   gap: 1rem;
   padding: 1rem;
+  height: calc(100vh - 2rem);
   max-height: calc(100vh - 2rem);
   overflow: hidden;
 }
@@ -376,6 +398,7 @@ select {
   display: flex;
   flex-wrap: wrap;
   gap: 0.55rem;
+  align-content: start;
 }
 
 .filter-chip {
@@ -396,7 +419,9 @@ select {
 .browser-groups {
   display: grid;
   gap: 1rem;
+  min-height: 0;
   overflow: auto;
+  overscroll-behavior: contain;
   padding-right: 0.25rem;
 }
 
@@ -618,15 +643,29 @@ select {
   background: rgba(31, 43, 51, 0.32);
 }
 
+.hamburger {
+  display: inline-grid;
+  gap: 3px;
+  margin-right: 0.45rem;
+}
+
+.hamburger span {
+  width: 14px;
+  height: 2px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
 .mobile-only {
   display: none;
 }
 
-body.browser-open .drawer-scrim {
+body.browser-open .drawer-scrim,
+body.controls-open .drawer-scrim {
   display: block;
 }
 
-body.immersive-mode .dashboard,
+body.immersive-mode .control-panel,
 body.immersive-mode .browser-panel,
 body.immersive-mode .topbar {
   display: none;
@@ -655,8 +694,14 @@ body.immersive-mode .viewer-stage {
 }
 
 @media (max-width: 1080px) {
-  .dashboard {
-    grid-template-columns: 1fr;
+  .topbar {
+    flex-wrap: wrap;
+  }
+
+  .header-search {
+    max-width: none;
+    order: 3;
+    width: 100%;
   }
 }
 
@@ -669,8 +714,24 @@ body.immersive-mode .viewer-stage {
     flex-direction: column;
   }
 
+  .header-search {
+    order: 2;
+    flex: none;
+    width: 100%;
+    max-width: none;
+  }
+
+  .topbar-actions {
+    order: 3;
+    width: 100%;
+  }
+
   .layout {
     grid-template-columns: 1fr;
+  }
+
+  .control-panel {
+    width: min(92vw, 30rem);
   }
 
   .browser-panel {
@@ -696,12 +757,8 @@ body.immersive-mode .viewer-stage {
     order: 1;
   }
 
-  .dashboard {
-    order: 2;
-  }
-
   .browser-panel {
-    order: 3;
+    order: 2;
   }
 
   .viewer-panel {
@@ -726,25 +783,26 @@ body.immersive-mode .viewer-stage {
   }
 
   .topbar,
-  .dashboard,
   .viewer-panel {
     border-radius: 20px;
   }
 
   .topbar,
-  .dashboard,
   .viewer-panel,
-  .browser-panel {
+  .browser-panel,
+  .control-panel {
     padding: 0.9rem;
   }
 
   .topbar-actions {
+    display: grid;
+    grid-template-columns: 1fr;
     width: 100%;
-    justify-content: stretch;
   }
 
   .topbar-actions > * {
-    flex: 1 1 45%;
+    min-width: 0;
+    width: 100%;
   }
 
   .stat-grid,

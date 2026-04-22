@@ -24,6 +24,34 @@
     <a class="skip-link" href="#viewer-panel">Skip to the active document</a>
     <div class="page-backdrop" aria-hidden="true"></div>
     <div class="drawer-scrim" id="drawerScrim" hidden></div>
+    <aside class="control-panel" id="controlPanel" aria-labelledby="dashboardHeading">
+      <div class="panel-header">
+        <div>
+          <p class="eyebrow">Controls</p>
+          <h2 id="dashboardHeading">Plans, raw files, and future viewer work in one place.</h2>
+        </div>
+        <button class="button ghost" id="closeMenu" type="button">
+          Close
+        </button>
+      </div>
+
+      <div class="dashboard-hero">
+        <p class="hero-copy" id="siteTagline">
+          The library will rebuild itself from anything inside the documents
+          folder.
+        </p>
+      </div>
+
+      <div class="stat-grid" id="statGrid" aria-live="polite"></div>
+
+      <section class="recent-panel" aria-labelledby="recentHeading">
+        <div class="section-heading">
+          <h3 id="recentHeading">Recently updated</h3>
+          <p>Quick entry points into the freshest files in the library.</p>
+        </div>
+        <div class="recent-grid" id="recentGrid"></div>
+      </section>
+    </aside>
 
     <div class="shell">
       <header class="topbar">
@@ -33,7 +61,32 @@
           <p class="subtitle" id="siteSubtitle">Loading site details</p>
         </div>
 
+        <div class="header-search">
+          <label class="sr-only" for="searchInput">Search files and folders</label>
+          <div class="search-box">
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search files and folders"
+              autocomplete="off"
+            />
+          </div>
+          <p class="search-hint" id="resultSummary">Loading documents</p>
+        </div>
+
         <div class="topbar-actions">
+          <button
+            class="button ghost"
+            id="menuToggle"
+            type="button"
+            aria-controls="controlPanel"
+            aria-expanded="false"
+          >
+            <span class="hamburger" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            Menu
+          </button>
           <button
             class="button ghost mobile-only"
             id="browserToggle"
@@ -80,40 +133,6 @@
       </header>
 
       <main class="layout">
-        <section class="dashboard" aria-labelledby="dashboardHeading">
-          <div class="dashboard-hero">
-            <p class="eyebrow">Dashboard</p>
-            <h2 id="dashboardHeading">Plans, raw files, and future viewer work in one place.</h2>
-            <p class="hero-copy" id="siteTagline">
-              The library will rebuild itself from anything inside the documents
-              folder.
-            </p>
-          </div>
-
-          <div class="search-card">
-            <label class="search-label" for="searchInput">Find a file or folder</label>
-            <div class="search-box">
-              <input
-                id="searchInput"
-                type="search"
-                placeholder="Search by name, type, or folder"
-                autocomplete="off"
-              />
-            </div>
-            <p class="search-hint" id="resultSummary">Loading documents</p>
-          </div>
-
-          <div class="stat-grid" id="statGrid" aria-live="polite"></div>
-
-          <section class="recent-panel" aria-labelledby="recentHeading">
-            <div class="section-heading">
-              <h3 id="recentHeading">Recently updated</h3>
-              <p>Quick entry points into the freshest files in the library.</p>
-            </div>
-            <div class="recent-grid" id="recentGrid"></div>
-          </section>
-        </section>
-
         <aside
           class="browser-panel"
           id="browserPanel"

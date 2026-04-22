@@ -21,6 +21,8 @@ const folderSummary = document.querySelector("#folderSummary");
 const browserGroups = document.querySelector("#browserGroups");
 const resultSummary = document.querySelector("#resultSummary");
 const searchInput = document.querySelector("#searchInput");
+const menuToggle = document.querySelector("#menuToggle");
+const closeMenu = document.querySelector("#closeMenu");
 const browserToggle = document.querySelector("#browserToggle");
 const closeBrowser = document.querySelector("#closeBrowser");
 const immersiveToggle = document.querySelector("#immersiveToggle");
@@ -70,9 +72,14 @@ function bindEvents() {
     renderBrowser();
   });
 
+  menuToggle.addEventListener("click", () => setControlsOpen(true));
+  closeMenu.addEventListener("click", () => setControlsOpen(false));
   browserToggle.addEventListener("click", () => setBrowserOpen(true));
   closeBrowser.addEventListener("click", () => setBrowserOpen(false));
-  drawerScrim.addEventListener("click", () => setBrowserOpen(false));
+  drawerScrim.addEventListener("click", () => {
+    setBrowserOpen(false);
+    setControlsOpen(false);
+  });
 
   immersiveToggle.addEventListener("click", () => {
     const isImmersive = document.body.classList.toggle("immersive-mode");
@@ -103,6 +110,7 @@ function bindEvents() {
   window.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       setBrowserOpen(false);
+      setControlsOpen(false);
       if (document.body.classList.contains("immersive-mode")) {
         document.body.classList.remove("immersive-mode");
         immersiveToggle.setAttribute("aria-pressed", "false");
@@ -603,9 +611,30 @@ function groupDocumentsByFolder(entries) {
 }
 
 function setBrowserOpen(isOpen) {
+  if (isOpen) {
+    document.body.classList.remove("controls-open");
+    menuToggle.setAttribute("aria-expanded", "false");
+  }
   document.body.classList.toggle("browser-open", isOpen);
   browserToggle.setAttribute("aria-expanded", String(isOpen));
-  drawerScrim.hidden = !isOpen;
+  syncDrawerScrim();
+}
+
+function setControlsOpen(isOpen) {
+  if (isOpen) {
+    document.body.classList.remove("browser-open");
+    browserToggle.setAttribute("aria-expanded", "false");
+  }
+  document.body.classList.toggle("controls-open", isOpen);
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+  syncDrawerScrim();
+}
+
+function syncDrawerScrim() {
+  const isAnyDrawerOpen =
+    document.body.classList.contains("browser-open") ||
+    document.body.classList.contains("controls-open");
+  drawerScrim.hidden = !isAnyDrawerOpen;
 }
 
 async function fetchText(path) {

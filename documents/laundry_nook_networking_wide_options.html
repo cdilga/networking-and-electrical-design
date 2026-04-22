@@ -14,6 +14,30 @@ th { background: #f2f2f2; }
 .note { background:#fffbe6; border:1px solid #e6d17a; padding:12px; max-width:1000px; }
 svg { max-width: 100%; height: auto; border: 1px solid #ddd; }
 code { background:#f6f6f6; padding:2px 4px; }
+.product-links { min-width: 280px; }
+.product-links a { color:#0b5cab; text-decoration:none; }
+.product-links a:hover { text-decoration:underline; }
+.tip-ref { position:relative; display:inline-block; margin-left:2px; color:#0b5cab; cursor:help; font-weight:700; }
+.tip-ref::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: 135%;
+  transform: translateX(-50%);
+  width: min(280px, 70vw);
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: rgba(17, 17, 17, 0.94);
+  color: #fff;
+  font-size: 12px;
+  line-height: 1.35;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+.tip-ref:hover::after,
+.tip-ref:focus::after { opacity: 1; }
 </style>
 </head>
 <body>
@@ -22,18 +46,19 @@ code { background:#f6f6f6; padding:2px 4px; }
 <div class="note"><strong>Design rule:</strong> 752–800 mm wide is practical. 900 mm wide is possible by raw arithmetic but poor as a default because it leaves only 70 mm each side before plaster, trim, cabinet tolerances, side vents and cable exits. A 1000 mm wide cabinet is not a sensible target.</div>
 <h2>Calculated options</h2>
 <table>
-<thead><tr><th>ID</th><th>Option</th><th>External W × D × H mm</th><th>Side clearance each</th><th>Clear depth left in laundry</th><th>Max cart H with 150 top clearance</th><th>Max cart H with 200 top clearance</th><th>Basis</th></tr></thead>
+<thead><tr><th>ID</th><th>Option</th><th>External W × D × H mm</th><th>Side clearance each</th><th>Clear depth left in laundry</th><th>Max cart H with 150 top clearance</th><th>Max cart H with 200 top clearance</th><th>Basis</th><th>Reference products</th></tr></thead>
 <tbody>
-<tr><td>A1</td><td>6U cheap/common wall cabinet</td><td>600 × 450 × 375</td><td>220 mm</td><td>1200 mm</td><td>2015 mm</td><td>1965 mm</td><td>Common 600x450x375-style 6U wall cabinet</td></tr>
-<tr><td>A2</td><td>6U wider switch-depth cabinet</td><td>752 × 551 × 370</td><td>144 mm</td><td>1099 mm</td><td>2020 mm</td><td>1970 mm</td><td>Eaton/Tripp Lite SRW6UDPVRT class</td></tr>
-<tr><td>A3</td><td>6U custom wide envelope</td><td>800 × 550 × 370</td><td>120 mm</td><td>1100 mm</td><td>2020 mm</td><td>1970 mm</td><td>Custom/AliExpress/Alibaba target envelope</td></tr>
-<tr><td>B1</td><td>9U cheap/common wall cabinet</td><td>600 × 450 × 510</td><td>220 mm</td><td>1200 mm</td><td>1880 mm</td><td>1830 mm</td><td>Common 600x450x510-style 9U wall cabinet</td></tr>
-<tr><td>B2</td><td>9U wider switch-depth cabinet</td><td>752 × 551 × 504</td><td>144 mm</td><td>1099 mm</td><td>1886 mm</td><td>1836 mm</td><td>Eaton/Tripp Lite SRW9UDPVRT class</td></tr>
-<tr><td>B3</td><td>9U custom wide envelope</td><td>800 × 550 × 510</td><td>120 mm</td><td>1100 mm</td><td>1880 mm</td><td>1830 mm</td><td>Custom/AliExpress/Alibaba target envelope</td></tr>
-<tr><td>C1</td><td>12U/12RU 508-600D wall cabinet</td><td>600 × 508 × 640</td><td>220 mm</td><td>1142 mm</td><td>1750 mm</td><td>1700 mm</td><td>Typical 12U wall cabinet envelope</td></tr>
-<tr><td>C2</td><td>12U deeper switch-depth cabinet</td><td>600 × 563 × 637</td><td>220 mm</td><td>1087 mm</td><td>1753 mm</td><td>1703 mm</td><td>Eaton/Tripp Lite SRW12UDP class</td></tr>
+<tr><td>A1</td><td>6U cheap/common wall cabinet</td><td>600 × 450 × 375</td><td>220 mm</td><td>1200 mm</td><td>2015 mm</td><td>1965 mm</td><td>Common 600x450x375-style 6U wall cabinet</td><td class="product-links"><a href="https://www.4cabling.com.au/4cabling-6ru-w600mm-x-d450mm-wall-mount-server-rack.html" target="_blank" rel="noreferrer">4Cabling 6RU 600 × 450</a><sup class="tip-ref" tabindex="0" data-tip="AU off-the-shelf enclosed baseline. This is the closest straightforward match to the 600 × 450 × 375 low-cost entry cabinet envelope.">1</sup><br><a href="https://istarusa.com/en/claytek/products.php?model=WMZ-655" target="_blank" rel="noreferrer">iStarUSA WMZ-655</a><sup class="tip-ref" tabindex="0" data-tip="Useful deeper comparison at roughly 600 × 550 × 368 if you want extra cable and fan space without jumping to a wide custom cabinet.">2</sup></td></tr>
+<tr><td>A2</td><td>6U wider switch-depth cabinet</td><td>752 × 551 × 370</td><td>144 mm</td><td>1099 mm</td><td>2020 mm</td><td>1970 mm</td><td>Eaton/Tripp Lite SRW6UDPVRT class</td><td class="product-links"><a href="https://www.eaton.com/us/en-us/skuPage.SRW6UDPVRT.html" target="_blank" rel="noreferrer">Eaton SRW6UDPVRT</a></td></tr>
+<tr><td>A3</td><td>6U custom wide envelope</td><td>800 × 550 × 370</td><td>120 mm</td><td>1100 mm</td><td>2020 mm</td><td>1970 mm</td><td>Custom/AliExpress/Alibaba target envelope</td><td class="product-links"><a href="https://istarusa.com/en/istarusa/products.php?model=WOM-980" target="_blank" rel="noreferrer">iStarUSA WOM-980</a><sup class="tip-ref" tabindex="0" data-tip="Closest real wide wall-mount reference I found. It is open-frame and 9U, so use it as a fit and serviceability reference rather than a direct enclosed 6U match.">1</sup><br><a href="https://biaomaelectrical.en.made-in-china.com/product/XprRKQxuqEVj/China-Enhanced-Easier-Access-600-800mm-Width-Server-Network-Wall-Mount-Rack-Cabinet.html" target="_blank" rel="noreferrer">Biaoma 600/800 mm wall-mount custom cabinet</a><sup class="tip-ref" tabindex="0" data-tip="OEM/custom route for enclosed 600 or 800 mm width wall-mount cabinets. Confirm exact 6U height, 550 mm depth, door style, ventilation, and lead time before ordering.">2</sup></td></tr>
+<tr><td>B1</td><td>9U cheap/common wall cabinet</td><td>600 × 450 × 510</td><td>220 mm</td><td>1200 mm</td><td>1880 mm</td><td>1830 mm</td><td>Common 600x450x510-style 9U wall cabinet</td><td class="product-links"><a href="https://www.4cabling.com.au/4cabling-9ru-w600mm-x-d450mm-wall-mount-server-rack.html" target="_blank" rel="noreferrer">4Cabling 9RU 600 × 450</a><sup class="tip-ref" tabindex="0" data-tip="Closest AU off-the-shelf enclosed match to the cheap/common 9U baseline cabinet.">1</sup><br><a href="https://istarusa.com/en/claytek/products.php?model=WMZ-955" target="_blank" rel="noreferrer">iStarUSA WMZ-955</a><sup class="tip-ref" tabindex="0" data-tip="Slightly deeper 600 × 550 × 501 alternative that is still close to the 9U common-envelope case if you want more side service space.">2</sup></td></tr>
+<tr><td>B2</td><td>9U wider switch-depth cabinet</td><td>752 × 551 × 504</td><td>144 mm</td><td>1099 mm</td><td>1886 mm</td><td>1836 mm</td><td>Eaton/Tripp Lite SRW9UDPVRT class</td><td class="product-links"><a href="https://www.eaton.com/content/dam/eaton/products/server-racks-enclosures-airflow-management/racks-enclosures/tl-wallmount-enclosures/eaton-tripp-lite-series-SRW9UDPVRT-technical-data.pdf" target="_blank" rel="noreferrer">Eaton SRW9UDPVRT data sheet</a><sup class="tip-ref" tabindex="0" data-tip="Exact steel-door wide switch-depth reference for the 752 × 551 × 504 class. This PDF exposes the actual dimensional envelope directly.">1</sup><br><a href="https://www.eaton.com/us/en-us/skuPage.SRW9UDPGVRT.html" target="_blank" rel="noreferrer">Eaton SRW9UDPGVRT product page</a><sup class="tip-ref" tabindex="0" data-tip="Acrylic-window sibling in the same wide switch-depth family. Useful if you want a live product page while keeping almost the same outer envelope.">2</sup></td></tr>
+<tr><td>B3</td><td>9U custom wide envelope</td><td>800 × 550 × 510</td><td>120 mm</td><td>1100 mm</td><td>1880 mm</td><td>1830 mm</td><td>Custom/AliExpress/Alibaba target envelope</td><td class="product-links"><a href="https://istarusa.com/en/istarusa/products.php?model=WOM-980" target="_blank" rel="noreferrer">iStarUSA WOM-980</a><sup class="tip-ref" tabindex="0" data-tip="Closest real wide wall-mount product I found for the 800-class concept. It is open-frame rather than enclosed, but it gives you a practical 9U / 800 mm fit benchmark.">1</sup><br><a href="https://www.avadirect.com/WOM980-CM2U-9U-800mm-Adjustable-Wallmount-Server-Cabinet-with-2U-Cable-Management/Product/12145750" target="_blank" rel="noreferrer">AVADirect WOM980-CM2U bundle</a><sup class="tip-ref" tabindex="0" data-tip="Retail bundle around the same 9U 800 mm adjustable chassis, with added cable management. Good for a buy-now fallback if custom enclosed sourcing drags out.">2</sup></td></tr>
+<tr><td>C1</td><td>12U/12RU 508-600D wall cabinet</td><td>600 × 508 × 640</td><td>220 mm</td><td>1142 mm</td><td>1750 mm</td><td>1700 mm</td><td>Typical 12U wall cabinet envelope</td><td class="product-links"><a href="https://www.4cabling.com.au/4cabling-12ru-w600mm-x-d600mm-hinged-wall-mount-server-rack.html" target="_blank" rel="noreferrer">4Cabling 12RU 600 × 600 hinged</a><sup class="tip-ref" tabindex="0" data-tip="AU enclosed reference with the right general 12U scale and a generous 600 mm depth. Slightly deeper than the 508 mm minimum case, but very usable for cabling and thermals.">1</sup><br><a href="https://sysracks.com/product/12u-24-depth-24x24x245-wall-mount-19-enclosure-sysracks-srw-12-600-g/" target="_blank" rel="noreferrer">Sysracks SRW 12.600 G</a><sup class="tip-ref" tabindex="0" data-tip="Second real 12U 600 × 600 enclosed reference if you want another vendor for fit, airflow and included-accessory comparison.">2</sup></td></tr>
+<tr><td>C2</td><td>12U deeper switch-depth cabinet</td><td>600 × 563 × 637</td><td>220 mm</td><td>1087 mm</td><td>1753 mm</td><td>1703 mm</td><td>Eaton/Tripp Lite SRW12UDP class</td><td class="product-links"><a href="https://www.eaton.com/us/en-us/skuPage.SRW12UDP.html" target="_blank" rel="noreferrer">Eaton SRW12UDP</a><sup class="tip-ref" tabindex="0" data-tip="Closest exact switch-depth enclosed 12U reference for the 600 × 563 × 637 class.">1</sup><br><a href="https://www.eaton.com/content/dam/eaton/products/server-racks-enclosures-airflow-management/racks-enclosures/tl-wallmount-enclosures/eaton-tripp-lite-series-SRW12UDP-technical-data.pdf" target="_blank" rel="noreferrer">Eaton SRW12UDP data sheet</a><sup class="tip-ref" tabindex="0" data-tip="Technical PDF with the hard dimensions and load details if you want a cleaner engineering reference than the product page.">2</sup></td></tr>
 </tbody>
 </table>
+<p class="lead">Product links were checked on 22 April 2026. Treat the custom-width references as procurement leads rather than guaranteed drop-in matches, and verify door style, fan kit, usable rail depth, and shipping dimensions before ordering.</p>
 <h2>Diagram</h2>
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
 <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
