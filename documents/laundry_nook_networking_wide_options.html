@@ -2,22 +2,386 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Laundry nook networking cabinet widened options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-body { font-family: Arial, Helvetica, sans-serif; margin: 32px; line-height: 1.4; color: #111; }
-h1 { margin-bottom: 0; }
-.lead { margin-top: 6px; color: #333; max-width: 1000px; }
-table { border-collapse: collapse; width: 100%; margin: 18px 0 28px; font-size: 14px; }
-th,td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
-th { background: #f2f2f2; }
-.badge { display:inline-block; border:1px solid #aaa; padding:3px 7px; border-radius:999px; margin-right:6px; background:#fafafa; }
-.note { background:#fffbe6; border:1px solid #e6d17a; padding:12px; max-width:1000px; }
-svg { max-width: 100%; height: auto; border: 1px solid #ddd; }
-code { background:#f6f6f6; padding:2px 4px; }
-.product-links { min-width: 280px; }
-.product-links a { color:#0b5cab; text-decoration:none; }
-.product-links a:hover { text-decoration:underline; }
-.tip-ref { position:relative; display:inline-block; margin-left:2px; color:#0b5cab; cursor:help; font-weight:700; }
+:root {
+  --paper: #f6f1e6;
+  --paper-strong: #fffdfa;
+  --paper-soft: rgba(255, 255, 255, 0.72);
+  --ink: #172126;
+  --muted: #526068;
+  --line: rgba(23, 33, 38, 0.14);
+  --line-strong: rgba(23, 33, 38, 0.24);
+  --signal: #0e7c76;
+  --warn: #9b4b1d;
+  --danger: #bb3e2d;
+  --shadow: 0 20px 40px rgba(38, 27, 18, 0.08);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --font-display: "Fraunces", serif;
+  --font-body: "IBM Plex Sans", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top left, rgba(14, 124, 118, 0.1), transparent 30%),
+    radial-gradient(circle at top right, rgba(155, 75, 29, 0.09), transparent 28%),
+    linear-gradient(180deg, #f7f2e8 0%, #ecdfc9 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(23, 33, 38, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 33, 38, 0.035) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.28), transparent 90%);
+}
+
+main {
+  position: relative;
+  z-index: 1;
+  width: min(1380px, calc(100% - 1.5rem));
+  margin: 0 auto;
+  padding: 28px 0 40px;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1,
+.section-head h2,
+.group-heading h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.hero,
+.card,
+.panel,
+.table-shell,
+.rule-card,
+.fallback,
+.loading {
+  border: 1px solid var(--line);
+  background: var(--paper-soft);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow);
+}
+
+.hero {
+  display: grid;
+  gap: 1rem;
+  padding: 1.4rem;
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  border-top: 0;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--signal);
+}
+
+.hero h1 {
+  font-size: clamp(2.1rem, 5vw, 4rem);
+  line-height: 0.92;
+  max-width: 14ch;
+}
+
+.lead {
+  max-width: 80ch;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 40px;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(23, 33, 38, 0.1);
+  background: rgba(255, 255, 255, 0.74);
+  font-size: 0.94rem;
+}
+
+.pill strong {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  color: var(--signal);
+}
+
+.layout {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.card {
+  display: grid;
+  gap: 1.15rem;
+  padding: 1.2rem;
+  border-radius: var(--radius-xl);
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.85rem;
+}
+
+.section-head h2 {
+  font-size: clamp(1.45rem, 2.6vw, 2.25rem);
+}
+
+.section-head p {
+  max-width: 65ch;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.summary-grid,
+.rule-grid,
+.tower-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.9rem;
+}
+
+.panel,
+.rule-card {
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.panel h3,
+.rule-card h3 {
+  font-size: 1rem;
+}
+
+.metric {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.group-list {
+  display: grid;
+  gap: 1rem;
+}
+
+.group-shell {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(250, 245, 236, 0.86));
+  border: 1px solid rgba(23, 33, 38, 0.08);
+}
+
+.group-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.group-heading h3 {
+  font-size: 1.35rem;
+}
+
+.group-heading p {
+  max-width: 60ch;
+  color: var(--muted);
+}
+
+.elevation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 0.9rem;
+}
+
+.elevation-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(23, 33, 38, 0.1);
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.option-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7rem;
+}
+
+.option-id {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  min-height: 2rem;
+  padding: 0 0.7rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.option-width {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+
+.option-name {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.option-source {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.diagram-frame {
+  padding: 0.7rem;
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 245, 236, 0.94)),
+    linear-gradient(90deg, rgba(23, 33, 38, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(23, 33, 38, 0.04) 1px, transparent 1px);
+  background-size: auto, 20px 20px, 20px 20px;
+  border: 1px solid rgba(23, 33, 38, 0.08);
+}
+
+.diagram-frame svg,
+.tower-figure svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.metric-list {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.94rem;
+}
+
+.metric-list strong {
+  font-weight: 700;
+}
+
+.table-shell {
+  overflow: auto;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.86);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 960px;
+}
+
+th,
+td {
+  padding: 0.8rem 0.9rem;
+  border: 1px solid rgba(23, 33, 38, 0.1);
+  text-align: left;
+  vertical-align: top;
+  font-size: 0.94rem;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background: #f6efe0;
+  z-index: 1;
+}
+
+.product-links {
+  min-width: 290px;
+}
+
+.product-links a {
+  color: #0b5cab;
+  text-decoration: none;
+}
+
+.product-links a:hover {
+  text-decoration: underline;
+}
+
+.tip-ref {
+  position: relative;
+  display: inline-block;
+  margin-left: 2px;
+  color: #0b5cab;
+  cursor: help;
+  font-weight: 700;
+}
+
 .tip-ref::after {
   content: attr(data-tip);
   position: absolute;
@@ -27,196 +391,673 @@ code { background:#f6f6f6; padding:2px 4px; }
   width: min(280px, 70vw);
   padding: 8px 10px;
   border-radius: 10px;
-  background: rgba(17, 17, 17, 0.94);
+  background: rgba(23, 33, 38, 0.95);
   color: #fff;
   font-size: 12px;
   line-height: 1.35;
   opacity: 0;
   pointer-events: none;
   transition: opacity 120ms ease;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.22);
 }
+
 .tip-ref:hover::after,
-.tip-ref:focus::after { opacity: 1; }
+.tip-ref:focus::after {
+  opacity: 1;
+}
+
+.tower-card {
+  display: grid;
+  gap: 0.8rem;
+  padding: 1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(23, 33, 38, 0.1);
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.tower-card h3 {
+  font-size: 1rem;
+}
+
+.tower-figures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.tower-figure {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.7rem;
+  border-radius: 14px;
+  background: rgba(247, 242, 232, 0.86);
+  border: 1px solid rgba(23, 33, 38, 0.08);
+}
+
+.tower-figure h4 {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.tower-figure p,
+.tower-meta li,
+.rule-card p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.tower-meta {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.status-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0.35rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border: 1px solid rgba(23, 33, 38, 0.12);
+}
+
+.status-ok {
+  background: rgba(14, 124, 118, 0.14);
+  color: #0a6762;
+}
+
+.status-warn {
+  background: rgba(187, 62, 45, 0.12);
+  color: #8f2f23;
+}
+
+.small-note {
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.loading,
+.fallback {
+  padding: 1rem;
+  border-radius: 18px;
+}
+
+.loading {
+  font-family: var(--font-mono);
+}
+
+noscript .fallback {
+  margin-top: 1rem;
+}
+
+@media (max-width: 820px) {
+  main {
+    width: calc(100% - 0.9rem);
+    padding-top: 18px;
+  }
+
+  .hero,
+  .card {
+    padding: 1rem;
+  }
+
+  .tower-figures {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
 <body>
-<h1>Laundry nook networking cabinet — widened cabinet and trolley envelope</h1>
-<p class="lead">Control dimensions used: <span class="badge">nook wall 1040 mm nominal</span><span class="badge">room depth 1650 mm</span><span class="badge">ceiling 2590 mm</span><span class="badge">50 mm gap under cabinet</span>. The 1040 mm plan value is used as the safe control even where the rough field estimate is ~1070 mm.</p>
-<div class="note"><strong>Design rule:</strong> 752–800 mm wide is practical. 900 mm wide is possible by raw arithmetic but poor as a default because it leaves only 70 mm each side before plaster, trim, cabinet tolerances, side vents and cable exits. A 1000 mm wide cabinet is not a sensible target.</div>
-<h2>Calculated options</h2>
-<table>
-<thead><tr><th>ID</th><th>Option</th><th>External W × D × H mm</th><th>Side clearance each</th><th>Clear depth left in laundry</th><th>Max cart H with 150 top clearance</th><th>Max cart H with 200 top clearance</th><th>Basis</th><th>Reference products</th></tr></thead>
-<tbody>
-<tr><td>A1</td><td>6U cheap/common wall cabinet</td><td>600 × 450 × 375</td><td>220 mm</td><td>1200 mm</td><td>2015 mm</td><td>1965 mm</td><td>Common 600x450x375-style 6U wall cabinet</td><td class="product-links"><a href="https://www.4cabling.com.au/4cabling-6ru-w600mm-x-d450mm-wall-mount-server-rack.html" target="_blank" rel="noreferrer">4Cabling 6RU 600 × 450</a><sup class="tip-ref" tabindex="0" data-tip="AU off-the-shelf enclosed baseline. This is the closest straightforward match to the 600 × 450 × 375 low-cost entry cabinet envelope.">1</sup><br><a href="https://istarusa.com/en/claytek/products.php?model=WMZ-655" target="_blank" rel="noreferrer">iStarUSA WMZ-655</a><sup class="tip-ref" tabindex="0" data-tip="Useful deeper comparison at roughly 600 × 550 × 368 if you want extra cable and fan space without jumping to a wide custom cabinet.">2</sup></td></tr>
-<tr><td>A2</td><td>6U wider switch-depth cabinet</td><td>752 × 551 × 370</td><td>144 mm</td><td>1099 mm</td><td>2020 mm</td><td>1970 mm</td><td>Eaton/Tripp Lite SRW6UDPVRT class</td><td class="product-links"><a href="https://www.eaton.com/us/en-us/skuPage.SRW6UDPVRT.html" target="_blank" rel="noreferrer">Eaton SRW6UDPVRT</a></td></tr>
-<tr><td>A3</td><td>6U custom wide envelope</td><td>800 × 550 × 370</td><td>120 mm</td><td>1100 mm</td><td>2020 mm</td><td>1970 mm</td><td>Custom/AliExpress/Alibaba target envelope</td><td class="product-links"><a href="https://istarusa.com/en/istarusa/products.php?model=WOM-980" target="_blank" rel="noreferrer">iStarUSA WOM-980</a><sup class="tip-ref" tabindex="0" data-tip="Closest real wide wall-mount reference I found. It is open-frame and 9U, so use it as a fit and serviceability reference rather than a direct enclosed 6U match.">1</sup><br><a href="https://biaomaelectrical.en.made-in-china.com/product/XprRKQxuqEVj/China-Enhanced-Easier-Access-600-800mm-Width-Server-Network-Wall-Mount-Rack-Cabinet.html" target="_blank" rel="noreferrer">Biaoma 600/800 mm wall-mount custom cabinet</a><sup class="tip-ref" tabindex="0" data-tip="OEM/custom route for enclosed 600 or 800 mm width wall-mount cabinets. Confirm exact 6U height, 550 mm depth, door style, ventilation, and lead time before ordering.">2</sup></td></tr>
-<tr><td>B1</td><td>9U cheap/common wall cabinet</td><td>600 × 450 × 510</td><td>220 mm</td><td>1200 mm</td><td>1880 mm</td><td>1830 mm</td><td>Common 600x450x510-style 9U wall cabinet</td><td class="product-links"><a href="https://www.4cabling.com.au/4cabling-9ru-w600mm-x-d450mm-wall-mount-server-rack.html" target="_blank" rel="noreferrer">4Cabling 9RU 600 × 450</a><sup class="tip-ref" tabindex="0" data-tip="Closest AU off-the-shelf enclosed match to the cheap/common 9U baseline cabinet.">1</sup><br><a href="https://istarusa.com/en/claytek/products.php?model=WMZ-955" target="_blank" rel="noreferrer">iStarUSA WMZ-955</a><sup class="tip-ref" tabindex="0" data-tip="Slightly deeper 600 × 550 × 501 alternative that is still close to the 9U common-envelope case if you want more side service space.">2</sup></td></tr>
-<tr><td>B2</td><td>9U wider switch-depth cabinet</td><td>752 × 551 × 504</td><td>144 mm</td><td>1099 mm</td><td>1886 mm</td><td>1836 mm</td><td>Eaton/Tripp Lite SRW9UDPVRT class</td><td class="product-links"><a href="https://www.eaton.com/content/dam/eaton/products/server-racks-enclosures-airflow-management/racks-enclosures/tl-wallmount-enclosures/eaton-tripp-lite-series-SRW9UDPVRT-technical-data.pdf" target="_blank" rel="noreferrer">Eaton SRW9UDPVRT data sheet</a><sup class="tip-ref" tabindex="0" data-tip="Exact steel-door wide switch-depth reference for the 752 × 551 × 504 class. This PDF exposes the actual dimensional envelope directly.">1</sup><br><a href="https://www.eaton.com/us/en-us/skuPage.SRW9UDPGVRT.html" target="_blank" rel="noreferrer">Eaton SRW9UDPGVRT product page</a><sup class="tip-ref" tabindex="0" data-tip="Acrylic-window sibling in the same wide switch-depth family. Useful if you want a live product page while keeping almost the same outer envelope.">2</sup></td></tr>
-<tr><td>B3</td><td>9U custom wide envelope</td><td>800 × 550 × 510</td><td>120 mm</td><td>1100 mm</td><td>1880 mm</td><td>1830 mm</td><td>Custom/AliExpress/Alibaba target envelope</td><td class="product-links"><a href="https://istarusa.com/en/istarusa/products.php?model=WOM-980" target="_blank" rel="noreferrer">iStarUSA WOM-980</a><sup class="tip-ref" tabindex="0" data-tip="Closest real wide wall-mount product I found for the 800-class concept. It is open-frame rather than enclosed, but it gives you a practical 9U / 800 mm fit benchmark.">1</sup><br><a href="https://www.avadirect.com/WOM980-CM2U-9U-800mm-Adjustable-Wallmount-Server-Cabinet-with-2U-Cable-Management/Product/12145750" target="_blank" rel="noreferrer">AVADirect WOM980-CM2U bundle</a><sup class="tip-ref" tabindex="0" data-tip="Retail bundle around the same 9U 800 mm adjustable chassis, with added cable management. Good for a buy-now fallback if custom enclosed sourcing drags out.">2</sup></td></tr>
-<tr><td>C1</td><td>12U/12RU 508-600D wall cabinet</td><td>600 × 508 × 640</td><td>220 mm</td><td>1142 mm</td><td>1750 mm</td><td>1700 mm</td><td>Typical 12U wall cabinet envelope</td><td class="product-links"><a href="https://www.4cabling.com.au/4cabling-12ru-w600mm-x-d600mm-hinged-wall-mount-server-rack.html" target="_blank" rel="noreferrer">4Cabling 12RU 600 × 600 hinged</a><sup class="tip-ref" tabindex="0" data-tip="AU enclosed reference with the right general 12U scale and a generous 600 mm depth. Slightly deeper than the 508 mm minimum case, but very usable for cabling and thermals.">1</sup><br><a href="https://sysracks.com/product/12u-24-depth-24x24x245-wall-mount-19-enclosure-sysracks-srw-12-600-g/" target="_blank" rel="noreferrer">Sysracks SRW 12.600 G</a><sup class="tip-ref" tabindex="0" data-tip="Second real 12U 600 × 600 enclosed reference if you want another vendor for fit, airflow and included-accessory comparison.">2</sup></td></tr>
-<tr><td>C2</td><td>12U deeper switch-depth cabinet</td><td>600 × 563 × 637</td><td>220 mm</td><td>1087 mm</td><td>1753 mm</td><td>1703 mm</td><td>Eaton/Tripp Lite SRW12UDP class</td><td class="product-links"><a href="https://www.eaton.com/us/en-us/skuPage.SRW12UDP.html" target="_blank" rel="noreferrer">Eaton SRW12UDP</a><sup class="tip-ref" tabindex="0" data-tip="Closest exact switch-depth enclosed 12U reference for the 600 × 563 × 637 class.">1</sup><br><a href="https://www.eaton.com/content/dam/eaton/products/server-racks-enclosures-airflow-management/racks-enclosures/tl-wallmount-enclosures/eaton-tripp-lite-series-SRW12UDP-technical-data.pdf" target="_blank" rel="noreferrer">Eaton SRW12UDP data sheet</a><sup class="tip-ref" tabindex="0" data-tip="Technical PDF with the hard dimensions and load details if you want a cleaner engineering reference than the product page.">2</sup></td></tr>
-</tbody>
-</table>
-<p class="lead">Product links were checked on 22 April 2026. Treat the custom-width references as procurement leads rather than guaranteed drop-in matches, and verify door style, fan kit, usable rail depth, and shipping dimensions before ordering.</p>
-<h2>Diagram</h2>
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500">
-<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#333"/></marker></defs>
-<rect x="0" y="0" width="1200" height="1500" rx="0" fill="#fff" stroke="none" stroke-width="1" opacity="1"/>
-<text x="40" y="35" font-size="22" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Laundry nook networking envelope — widened cabinet + tower trolley options</text>
-<text x="40" y="60" font-size="13" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#333">All dimensions in mm. Plan controls: nominal nook width 1040, room depth 1650, ceiling 2590.</text>
-<text x="80" y="60" font-size="16" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">PLAN VIEW: 1040 mm wall segment × 1650 mm laundry depth</text>
-<rect x="80" y="80" width="260.0" height="412.5" rx="0" fill="#f7f7f7" stroke="#111" stroke-width="2" opacity="1"/>
-<rect x="80" y="72" width="260.0" height="8" rx="0" fill="#444" stroke="#444" stroke-width="1" opacity="1"/>
-<text x="210.0" y="62" font-size="12" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">nook wall = 1040</text>
-<text x="352.0" y="286.25" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">room depth = 1650</text>
-<rect x="135.0" y="100" width="150.0" height="30" rx="2" fill="#b7d7f0" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="210.0" y="120" font-size="11" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">600W cabinet (600W) → side clr 220 ea.</text>
-<rect x="116.0" y="138" width="188.0" height="30" rx="2" fill="#bfe3bf" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="210.0" y="158" font-size="11" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">752W wide (752W) → side clr 144 ea.</text>
-<rect x="110.0" y="176" width="200.0" height="30" rx="2" fill="#ffe0a3" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="210.0" y="196" font-size="11" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">800W custom (800W) → side clr 120 ea.</text>
-<rect x="97.5" y="214" width="225.0" height="30" rx="2" fill="#f5b7b1" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="210.0" y="234" font-size="11" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">900W custom max (900W) → side clr 70 ea.</text>
-<text x="430.0" y="60" font-size="16" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Projection into laundry</text>
-<rect x="430.0" y="100" width="112.5" height="20" rx="0" fill="#e6e6e6" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="550.5" y="115" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">450D cabinet: leaves 1200 clear</text>
-<rect x="430.0" y="148" width="137.75" height="20" rx="0" fill="#e6e6e6" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="575.75" y="163" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">551D wide cabinet: leaves 1099 clear</text>
-<rect x="430.0" y="196" width="150.0" height="20" rx="0" fill="#e6e6e6" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="588.0" y="211" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">600D deep/cable allowance: leaves 1050 clear</text>
-<rect x="430.0" y="244" width="175.0" height="20" rx="0" fill="#e6e6e6" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="613.0" y="259" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">700D front-facing full-tower cart: leaves 950 clear</text>
-<text x="80" y="288" font-size="15" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Trolley footprint options</text>
-<rect x="80" y="300" width="245.0" height="150.0" rx="0" fill="none" stroke="#000" stroke-width="2" opacity="1"/>
-<text x="202.5" y="468.0" font-size="11" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">980W × 600D max general trolley envelope</text>
-<rect x="95" y="318" width="151.0" height="75.0" rx="0" fill="#d9edf7" stroke="#245" stroke-width="1" opacity="1"/>
-<text x="170.5" y="358" font-size="11" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">sideways full tower</text>
-<text x="170.5" y="373" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">~604W × 300D</text>
-<rect x="248.75" y="318" width="67.5" height="175.0" rx="0" fill="#fbd7d1" stroke="#822" stroke-width="1" opacity="0.85"/>
-<text x="282.5" y="388" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">front-facing</text>
-<text x="282.5" y="403" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">tower</text>
-<text x="282.5" y="418" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">~270W × 700D</text>
-<text x="40" y="575" font-size="16" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">ELEVATION: top-mounted cabinet + cart height</text>
-<line x1="40" y1="1299.3000000000002" x2="400" y2="1299.3000000000002" stroke="#111" stroke-width="2"/>
-<line x1="40" y1="600" x2="400" y2="600" stroke="#777" stroke-width="1" stroke-dasharray="4 3"/>
-<text x="405" y="605" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">ceiling 2590</text>
-<text x="405" y="1299.3000000000002" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">floor</text>
-<rect x="45" y="600" width="340" height="40.5" rx="0" fill="#f5f5f5" stroke="#aaa" stroke-width="1" opacity="1"/>
-<text x="215" y="622" font-size="11" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">150 top ventilation/service zone</text>
-<rect x="65" y="640.5" width="54" height="101.25" rx="0" fill="#cfe2f3" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="92.0" y="695.125" font-size="13" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">A1</text>
-<rect x="65" y="755.2500000000001" width="54" height="544.0500000000001" rx="0" fill="#e2f0d9" stroke="#333" stroke-width="1" opacity="0.9"/>
-<text x="92.0" y="750.2500000000001" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">cart 2015</text>
-<text x="92.0" y="1317.3000000000002" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">600W</text>
-<rect x="131" y="640.5" width="54" height="99.9" rx="0" fill="#cfe2f3" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="158.0" y="694.45" font-size="13" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">A2</text>
-<rect x="131" y="753.9000000000001" width="54" height="545.4000000000001" rx="0" fill="#e2f0d9" stroke="#333" stroke-width="1" opacity="0.9"/>
-<text x="158.0" y="748.9000000000001" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">cart 2020</text>
-<text x="158.0" y="1317.3000000000002" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">752W</text>
-<rect x="197" y="640.5" width="54" height="137.70000000000002" rx="0" fill="#cfe2f3" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="224.0" y="713.35" font-size="13" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">B1</text>
-<rect x="197" y="791.7000000000002" width="54" height="507.6" rx="0" fill="#e2f0d9" stroke="#333" stroke-width="1" opacity="0.9"/>
-<text x="224.0" y="786.7000000000002" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">cart 1880</text>
-<text x="224.0" y="1317.3000000000002" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">600W</text>
-<rect x="263" y="640.5" width="54" height="136.08" rx="0" fill="#cfe2f3" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="290.0" y="712.54" font-size="13" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">B2</text>
-<rect x="263" y="790.0800000000002" width="54" height="509.22" rx="0" fill="#e2f0d9" stroke="#333" stroke-width="1" opacity="0.9"/>
-<text x="290.0" y="785.0800000000002" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">cart 1886</text>
-<text x="290.0" y="1317.3000000000002" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">752W</text>
-<rect x="329" y="640.5" width="54" height="172.8" rx="0" fill="#cfe2f3" stroke="#333" stroke-width="1" opacity="1"/>
-<text x="356.0" y="730.9" font-size="13" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">C1</text>
-<rect x="329" y="826.8000000000002" width="54" height="472.50000000000006" rx="0" fill="#e2f0d9" stroke="#333" stroke-width="1" opacity="0.9"/>
-<text x="356.0" y="821.8000000000002" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">cart 1750</text>
-<text x="356.0" y="1317.3000000000002" font-size="10" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">600W</text>
-<text x="470" y="90" font-size="16" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Calculated option table</text>
-<text x="470" y="115" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">ID</text>
-<text x="515" y="115" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">W×D×H</text>
-<text x="625" y="115" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Side clr ea.</text>
-<text x="715" y="115" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Clear depth</text>
-<text x="805" y="115" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Cart H @150</text>
-<text x="895" y="115" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Cart H @200</text>
-<line x1="470" y1="121" x2="990" y2="121" stroke="#333" stroke-width="1"/>
-<text x="470" y="143" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">A1</text>
-<text x="515" y="143" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">600×450×375</text>
-<text x="625" y="143" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">220</text>
-<text x="715" y="143" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1200</text>
-<text x="805" y="143" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">2015</text>
-<text x="895" y="143" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1965</text>
-<text x="470" y="167" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">A2</text>
-<text x="515" y="167" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">752×551×370</text>
-<text x="625" y="167" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">144</text>
-<text x="715" y="167" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1099</text>
-<text x="805" y="167" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">2020</text>
-<text x="895" y="167" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1970</text>
-<text x="470" y="191" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">A3</text>
-<text x="515" y="191" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">800×550×370</text>
-<text x="625" y="191" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">120</text>
-<text x="715" y="191" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1100</text>
-<text x="805" y="191" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">2020</text>
-<text x="895" y="191" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1970</text>
-<text x="470" y="215" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">B1</text>
-<text x="515" y="215" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">600×450×510</text>
-<text x="625" y="215" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">220</text>
-<text x="715" y="215" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1200</text>
-<text x="805" y="215" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1880</text>
-<text x="895" y="215" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1830</text>
-<text x="470" y="239" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">B2</text>
-<text x="515" y="239" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">752×551×504</text>
-<text x="625" y="239" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">144</text>
-<text x="715" y="239" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1099</text>
-<text x="805" y="239" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1886</text>
-<text x="895" y="239" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1836</text>
-<text x="470" y="263" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">B3</text>
-<text x="515" y="263" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">800×550×510</text>
-<text x="625" y="263" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">120</text>
-<text x="715" y="263" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1100</text>
-<text x="805" y="263" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1880</text>
-<text x="895" y="263" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1830</text>
-<text x="470" y="287" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">C1</text>
-<text x="515" y="287" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">600×508×640</text>
-<text x="625" y="287" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">220</text>
-<text x="715" y="287" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1142</text>
-<text x="805" y="287" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1750</text>
-<text x="895" y="287" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1700</text>
-<text x="470" y="311" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">C2</text>
-<text x="515" y="311" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">600×563×637</text>
-<text x="625" y="311" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">220</text>
-<text x="715" y="311" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1087</text>
-<text x="805" y="311" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1753</text>
-<text x="895" y="311" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">1703</text>
-<text x="470" y="365" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#333">• Cart height values include a 50 mm gap below the wall cabinet.</text>
-<text x="470" y="385" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#333">• 150 mm top clearance is a tight active-vent target; 200 mm is better for heat and cable escape.</text>
-<text x="470" y="405" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#333">• 600W cabinets are common/cheap. 752W wide cabinets exist; 800W is a realistic custom/import envelope.</text>
-<text x="470" y="425" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#333">• 900W is possible geometrically but not recommended after plaster, door/trim tolerance and side airflow.</text>
-<text x="470" y="498" font-size="16" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Tower PC depth logic</text>
-<rect x="470" y="520" width="560" height="38" rx="0" fill="#fafafa" stroke="#ccc" stroke-width="1" opacity="1"/>
-<text x="480" y="535" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Front facing room</text>
-<text x="640" y="535" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">case depth 550–666 + cable 80–120</text>
-<text x="880" y="535" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">630–786D cart</text>
-<rect x="470" y="570" width="560" height="38" rx="0" fill="#fafafa" stroke="#ccc" stroke-width="1" opacity="1"/>
-<text x="480" y="585" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Sideways</text>
-<text x="640" y="585" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">case width 240–291 + service 80–120</text>
-<text x="880" y="585" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">340–411D cart</text>
-<rect x="470" y="620" width="560" height="38" rx="0" fill="#fafafa" stroke="#ccc" stroke-width="1" opacity="1"/>
-<text x="480" y="635" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Two towers</text>
-<text x="640" y="635" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">best as two shelves, not side-by-side</text>
-<text x="880" y="635" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">~1300–1450H cart</text>
-<text x="470" y="700" font-size="16" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Recommended build envelopes</text>
-<rect x="470" y="720" width="640" height="46" rx="0" fill="#fff" stroke="#ddd" stroke-width="1" opacity="1"/>
-<text x="480" y="737" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Best balance</text>
-<text x="620" y="737" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">9U 752W × 551D × 504H or 9U custom 800W × 550D × 510H; trolley ≤1880H @150 top clearance.</text>
-<rect x="470" y="778" width="640" height="46" rx="0" fill="#fff" stroke="#ddd" stroke-width="1" opacity="1"/>
-<text x="480" y="795" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Cheapest tidy</text>
-<text x="620" y="795" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">9U 600W × 450D × 510H; trolley ≤1880H; easiest to source; more side clearance.</text>
-<rect x="470" y="836" width="640" height="46" rx="0" fill="#fff" stroke="#ddd" stroke-width="1" opacity="1"/>
-<text x="480" y="853" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Maximum cart height</text>
-<text x="620" y="853" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">6U wide/custom ~752–800W × 550D × 370H; trolley ≤2020H, but rack space is tight.</text>
-<rect x="470" y="894" width="640" height="46" rx="0" fill="#fff" stroke="#ddd" stroke-width="1" opacity="1"/>
-<text x="480" y="911" font-size="12" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="bold" fill="#111">Full-tower handling</text>
-<text x="620" y="911" font-size="11" text-anchor="start" font-family="Arial, Helvetica, sans-serif" font-weight="normal" fill="#111">Use a 900–980W cart; 450D if towers are sideways; 600D if mixed; 700D only if front-facing tower access dominates.</text>
-</svg>
-<h2>Tower orientation rule</h2>
-<p>A full tower facing the room typically needs <strong>630–786 mm cart depth</strong> once rear cable clearance is included. The same tower rotated sideways typically needs only <strong>340–411 mm cart depth</strong>, but consumes 550–666 mm along the wall. For two towers, the cleanest layout is normally a vertical two-shelf cart rather than two full towers beside each other.</p>
+<main>
+  <header class="hero">
+    <p class="eyebrow">Calculated document</p>
+    <h1>Laundry nook networking cabinet widened options</h1>
+    <p class="lead">
+      This version keeps the analysis in the same spirit as the preferred high-wall-cabinet elevation,
+      but expands it to every cabinet width and height option. All visual panels are rendered from the
+      adjacent JSON so the cart height, side clearance, and depth figures stay tied to the actual calculation set.
+    </p>
+    <div class="pill-row" id="heroPills"></div>
+  </header>
+
+  <div class="layout" id="content">
+    <section class="loading">Loading calculated options from <code>laundry_nook_networking_wide_options.json</code>…</section>
+  </div>
+
+  <noscript>
+    <section class="fallback">
+      This document needs JavaScript enabled so it can render the calculated layout from the adjacent JSON file.
+    </section>
+  </noscript>
+</main>
+
+<script>
+const PRODUCT_LINKS = {
+  A1: [
+    {
+      href: "https://www.4cabling.com.au/4cabling-6ru-w600mm-x-d450mm-wall-mount-server-rack.html",
+      label: "4Cabling 6RU 600 × 450",
+      tip: "AU off-the-shelf enclosed baseline. This is the closest straightforward match to the 600 × 450 × 375 low-cost entry cabinet envelope."
+    },
+    {
+      href: "https://istarusa.com/en/claytek/products.php?model=WMZ-655",
+      label: "iStarUSA WMZ-655",
+      tip: "Useful deeper comparison at roughly 600 × 550 × 368 if you want extra cable and fan space without jumping to a wide custom cabinet."
+    }
+  ],
+  A2: [
+    {
+      href: "https://www.eaton.com/us/en-us/skuPage.SRW6UDPVRT.html",
+      label: "Eaton SRW6UDPVRT"
+    }
+  ],
+  A3: [
+    {
+      href: "https://istarusa.com/en/istarusa/products.php?model=WOM-980",
+      label: "iStarUSA WOM-980",
+      tip: "Closest real wide wall-mount reference I found. It is open-frame and 9U, so use it as a fit and serviceability reference rather than a direct enclosed 6U match."
+    },
+    {
+      href: "https://biaomaelectrical.en.made-in-china.com/product/XprRKQxuqEVj/China-Enhanced-Easier-Access-600-800mm-Width-Server-Network-Wall-Mount-Rack-Cabinet.html",
+      label: "Biaoma 600/800 mm wall-mount custom cabinet",
+      tip: "OEM/custom route for enclosed 600 or 800 mm width wall-mount cabinets. Confirm exact 6U height, 550 mm depth, door style, ventilation, and lead time before ordering."
+    }
+  ],
+  B1: [
+    {
+      href: "https://www.4cabling.com.au/4cabling-9ru-w600mm-x-d450mm-wall-mount-server-rack.html",
+      label: "4Cabling 9RU 600 × 450",
+      tip: "Closest AU off-the-shelf enclosed match to the cheap/common 9U baseline cabinet."
+    },
+    {
+      href: "https://istarusa.com/en/claytek/products.php?model=WMZ-955",
+      label: "iStarUSA WMZ-955",
+      tip: "Slightly deeper 600 × 550 × 501 alternative that is still close to the 9U common-envelope case if you want more side service space."
+    }
+  ],
+  B2: [
+    {
+      href: "https://www.eaton.com/content/dam/eaton/products/server-racks-enclosures-airflow-management/racks-enclosures/tl-wallmount-enclosures/eaton-tripp-lite-series-SRW9UDPVRT-technical-data.pdf",
+      label: "Eaton SRW9UDPVRT data sheet",
+      tip: "Exact steel-door wide switch-depth reference for the 752 × 551 × 504 class. This PDF exposes the actual dimensional envelope directly."
+    },
+    {
+      href: "https://www.eaton.com/us/en-us/skuPage.SRW9UDPGVRT.html",
+      label: "Eaton SRW9UDPGVRT product page",
+      tip: "Acrylic-window sibling in the same wide switch-depth family. Useful if you want a live product page while keeping almost the same outer envelope."
+    }
+  ],
+  B3: [
+    {
+      href: "https://istarusa.com/en/istarusa/products.php?model=WOM-980",
+      label: "iStarUSA WOM-980",
+      tip: "Closest real wide wall-mount product I found for the 800-class concept. It is open-frame rather than enclosed, but it gives you a practical 9U / 800 mm fit benchmark."
+    },
+    {
+      href: "https://www.avadirect.com/WOM980-CM2U-9U-800mm-Adjustable-Wallmount-Server-Cabinet-with-2U-Cable-Management/Product/12145750",
+      label: "AVADirect WOM980-CM2U bundle",
+      tip: "Retail bundle around the same 9U 800 mm adjustable chassis, with added cable management. Good for a buy-now fallback if custom enclosed sourcing drags out."
+    }
+  ],
+  C1: [
+    {
+      href: "https://www.4cabling.com.au/4cabling-12ru-w600mm-x-d600mm-hinged-wall-mount-server-rack.html",
+      label: "4Cabling 12RU 600 × 600 hinged",
+      tip: "AU enclosed reference with the right general 12U scale and a generous 600 mm depth. Slightly deeper than the 508 mm minimum case, but very usable for cabling and thermals."
+    },
+    {
+      href: "https://sysracks.com/product/12u-24-depth-24x24x245-wall-mount-19-enclosure-sysracks-srw-12-600-g/",
+      label: "Sysracks SRW 12.600 G",
+      tip: "Second real 12U 600 × 600 enclosed reference if you want another vendor for fit, airflow and included-accessory comparison."
+    }
+  ],
+  C2: [
+    {
+      href: "https://www.eaton.com/us/en-us/skuPage.SRW12UDP.html",
+      label: "Eaton SRW12UDP",
+      tip: "Closest exact switch-depth enclosed 12U reference for the 600 × 563 × 637 class."
+    },
+    {
+      href: "https://www.eaton.com/content/dam/eaton/products/server-racks-enclosures-airflow-management/racks-enclosures/tl-wallmount-enclosures/eaton-tripp-lite-series-SRW12UDP-technical-data.pdf",
+      label: "Eaton SRW12UDP data sheet",
+      tip: "Technical PDF with the hard dimensions and load details if you want a cleaner engineering reference than the product page."
+    }
+  ]
+};
+
+const GROUP_COPY = {
+  6: "Maximum cart height, but the rack itself stays tight. These are the best panels for a visually lighter installation or a mostly patch-and-switch wall box.",
+  9: "This is the practical sweet spot if the brief is a visibly wider rack without sacrificing the trolley below. It shows the strongest balance between rack volume and cart height.",
+  12: "These options are deeper and taller. They make sense when the wall cabinet needs proper short-server depth, heavier ventilation, or a more server-like top enclosure."
+};
+
+const PALETTES = {
+  6: { accent: "#2f80c0", fill: "rgba(96, 163, 217, 0.22)", cart: "rgba(17, 33, 38, 0.11)" },
+  9: { accent: "#198b61", fill: "rgba(31, 164, 113, 0.18)", cart: "rgba(17, 33, 38, 0.11)" },
+  12: { accent: "#a45326", fill: "rgba(196, 112, 61, 0.18)", cart: "rgba(17, 33, 38, 0.11)" }
+};
+
+function mm(value) {
+  return `${Number(value).toLocaleString()} mm`;
+}
+
+function sizeLabel(option) {
+  return `${option.w} × ${option.d} × ${option.h}`;
+}
+
+function clearText(value) {
+  return `${value.toFixed(0)} mm each side`;
+}
+
+function cartRange(option) {
+  return `${mm(option.cart_max_at_topclear_150_gap50)} / ${mm(option.cart_max_at_topclear_200_gap50)}`;
+}
+
+function productLinkMarkup(id) {
+  const links = PRODUCT_LINKS[id] || [];
+  if (!links.length) {
+    return "—";
+  }
+  return links.map((link, index) => {
+    const tip = link.tip
+      ? `<sup class="tip-ref" tabindex="0" data-tip="${escapeHtml(link.tip)}">${index + 1}</sup>`
+      : "";
+    return `<a href="${link.href}" target="_blank" rel="noreferrer">${escapeHtml(link.label)}</a>${tip}`;
+  }).join("<br>");
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+}
+
+function createElevationSvg(option, source) {
+  const palette = PALETTES[option.u];
+  const viewWidth = 260;
+  const viewHeight = 360;
+  const wallX = 30;
+  const wallY = 20;
+  const wallWidth = 200;
+  const wallHeight = 300;
+  const wallWidthMm = source.nook_width_nominal_mm;
+  const ceilingMm = source.ceiling_height_mm;
+  const mainClearance = source.recommended_top_clearance_mm[0];
+  const altClearance = source.recommended_top_clearance_mm[1];
+  const serviceGap = source.service_gap_between_cabinet_and_trolley_mm;
+  const maxCartWidthMm = 980;
+  const sx = wallWidth / wallWidthMm;
+  const sy = wallHeight / ceilingMm;
+  const floorY = wallY + wallHeight;
+  const mainLineY = wallY + mainClearance * sy;
+  const altLineY = wallY + altClearance * sy;
+  const cabinetWidth = option.w * sx;
+  const cabinetHeight = option.h * sy;
+  const cabinetX = wallX + (wallWidth - cabinetWidth) / 2;
+  const cabinetY = mainLineY;
+  const cartWidth = Math.min(wallWidth - 10, maxCartWidthMm * sx);
+  const cartX = wallX + (wallWidth - cartWidth) / 2;
+  const cartHeight = option.cart_max_at_topclear_150_gap50 * sy;
+  const cartY = floorY - cartHeight;
+  const altCabinetBottomY = floorY - option.bottom_at_topclear_200 * sy;
+  const dimensionY = floorY + 16;
+
+  return `
+    <svg viewBox="0 0 ${viewWidth} ${viewHeight}" aria-hidden="true">
+      <defs>
+        <marker id="arrow-${option.id}" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto-start-reverse">
+          <path d="M0,0 L8,4 L0,8 Z" fill="#46545c"></path>
+        </marker>
+      </defs>
+      <rect x="${wallX}" y="${wallY}" width="${wallWidth}" height="${wallHeight}" rx="12" fill="rgba(255,255,255,0.78)" stroke="rgba(23,33,38,0.2)" stroke-width="1.4"></rect>
+      <rect x="${wallX}" y="${wallY}" width="${wallWidth}" height="${mainLineY - wallY}" fill="rgba(14,124,118,0.1)"></rect>
+      <line x1="${wallX}" y1="${altLineY}" x2="${wallX + wallWidth}" y2="${altLineY}" stroke="rgba(14,124,118,0.5)" stroke-width="1.3" stroke-dasharray="5 5"></line>
+      <line x1="${wallX}" y1="${mainLineY}" x2="${wallX + wallWidth}" y2="${mainLineY}" stroke="rgba(14,124,118,0.8)" stroke-width="1.5"></line>
+      <rect x="${cabinetX}" y="${cabinetY}" width="${cabinetWidth}" height="${cabinetHeight}" rx="12" fill="${palette.fill}" stroke="${palette.accent}" stroke-width="2"></rect>
+      <rect x="${cartX}" y="${cartY}" width="${cartWidth}" height="${cartHeight}" rx="14" fill="${palette.cart}" stroke="rgba(23,33,38,0.35)" stroke-width="1.4"></rect>
+      <line x1="${wallX}" y1="${floorY}" x2="${wallX + wallWidth}" y2="${floorY}" stroke="rgba(23,33,38,0.35)" stroke-width="1.2"></line>
+      <line x1="${cabinetX}" y1="${dimensionY}" x2="${cabinetX + cabinetWidth}" y2="${dimensionY}" stroke="#46545c" stroke-width="1.1" marker-start="url(#arrow-${option.id})" marker-end="url(#arrow-${option.id})"></line>
+      <text x="${wallX + wallWidth / 2}" y="${wallY - 4}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#526068">1040 wall</text>
+      <text x="${wallX + 8}" y="${mainLineY - 6}" font-family="IBM Plex Mono, monospace" font-size="10" fill="#0e7c76">150 top clear</text>
+      <text x="${wallX + 8}" y="${altLineY - 6}" font-family="IBM Plex Mono, monospace" font-size="10" fill="#0e7c76">200 alt</text>
+      <text x="${cabinetX + cabinetWidth / 2}" y="${cabinetY + cabinetHeight / 2 - 2}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="${palette.accent}">${option.w}W</text>
+      <text x="${cabinetX + cabinetWidth / 2}" y="${cabinetY + cabinetHeight / 2 + 14}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="${palette.accent}">${option.h}H</text>
+      <text x="${cartX + cartWidth / 2}" y="${cartY + cartHeight / 2 - 2}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="11" fill="#172126">cart ${option.cart_max_at_topclear_150_gap50}</text>
+      <text x="${cartX + cartWidth / 2}" y="${cartY + cartHeight / 2 + 13}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#526068">980W envelope</text>
+      <line x1="${wallX + wallWidth + 12}" y1="${cabinetY + cabinetHeight}" x2="${wallX + wallWidth + 12}" y2="${floorY}" stroke="#46545c" stroke-width="1.1" marker-start="url(#arrow-${option.id})" marker-end="url(#arrow-${option.id})"></line>
+      <text x="${wallX + wallWidth + 19}" y="${cabinetY + cabinetHeight + (floorY - (cabinetY + cabinetHeight)) / 2}" transform="rotate(90 ${wallX + wallWidth + 19} ${cabinetY + cabinetHeight + (floorY - (cabinetY + cabinetHeight)) / 2})" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#526068">bottom @150 = ${option.bottom_at_topclear_150}</text>
+      <line x1="${wallX}" y1="${altCabinetBottomY}" x2="${wallX + wallWidth}" y2="${altCabinetBottomY}" stroke="rgba(155,75,29,0.35)" stroke-width="1.2" stroke-dasharray="4 4"></line>
+      <text x="${wallX + wallWidth - 4}" y="${altCabinetBottomY - 6}" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9b4b1d">cart @200 = ${option.cart_max_at_topclear_200_gap50}</text>
+      <text x="${cabinetX + cabinetWidth / 2}" y="${dimensionY + 13}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#526068">${option.w} cabinet width</text>
+      <text x="${wallX + 8}" y="${floorY + 28}" font-family="IBM Plex Mono, monospace" font-size="10" fill="#526068">${clearText(option.side_clear_each_nom)}</text>
+      <text x="${wallX + 8}" y="${floorY + 43}" font-family="IBM Plex Mono, monospace" font-size="10" fill="#526068">clear depth ${option.clear_depth}</text>
+      <text x="${wallX + 8}" y="${cartY - 8}" font-family="IBM Plex Mono, monospace" font-size="10" fill="#526068">gap ${serviceGap}</text>
+    </svg>
+  `;
+}
+
+function createPlanSvg(widthMm, depthMm, title, overflow) {
+  const viewWidth = 220;
+  const viewHeight = 150;
+  const outerX = 24;
+  const outerY = 28;
+  const outerWidth = 160;
+  const outerHeight = 98;
+  const sx = outerWidth / 980;
+  const sy = outerHeight / 600;
+  const innerWidth = Math.max(12, widthMm * sx);
+  const innerHeight = Math.max(12, depthMm * sy);
+  const innerX = outerX + (outerWidth - innerWidth) / 2;
+  const innerY = outerY + 10;
+  const exceedsDepth = overflow ? depthMm > 600 : false;
+  const depthLineY = outerY + outerHeight + 12;
+
+  return `
+    <svg viewBox="0 0 ${viewWidth} ${viewHeight}" aria-hidden="true">
+      <rect x="${outerX}" y="${outerY}" width="${outerWidth}" height="${outerHeight}" rx="14" fill="rgba(255,255,255,0.84)" stroke="rgba(23,33,38,0.2)" stroke-width="1.4"></rect>
+      <line x1="${outerX}" y1="${outerY - 8}" x2="${outerX + outerWidth}" y2="${outerY - 8}" stroke="#46545c" stroke-width="1.2"></line>
+      <text x="${outerX + outerWidth / 2}" y="${outerY - 14}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#526068">${title}</text>
+      <rect x="${innerX}" y="${innerY}" width="${innerWidth}" height="${innerHeight}" rx="12" fill="${exceedsDepth ? "rgba(187,62,45,0.16)" : "rgba(14,124,118,0.16)"}" stroke="${exceedsDepth ? "#bb3e2d" : "#0e7c76"}" stroke-width="1.6"></rect>
+      <text x="${innerX + innerWidth / 2}" y="${innerY + Math.min(innerHeight - 10, 22)}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#172126">${Math.round(widthMm)}W</text>
+      <text x="${innerX + innerWidth / 2}" y="${Math.min(innerY + innerHeight - 8, outerY + outerHeight + 16)}" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#172126">${Math.round(depthMm)}D</text>
+      <text x="${outerX}" y="${depthLineY}" font-family="IBM Plex Mono, monospace" font-size="10" fill="#526068">980W × 600D general cart envelope</text>
+      ${exceedsDepth ? `<text x="${outerX}" y="${depthLineY + 14}" font-family="IBM Plex Mono, monospace" font-size="10" fill="#bb3e2d">Depth overruns 600D general target</text>` : `<text x="${outerX}" y="${depthLineY + 14}" font-family="IBM Plex Mono, monospace" font-size="10" fill="#0e7c76">Fits inside 600D general target</text>`}
+    </svg>
+  `;
+}
+
+function renderSummary(source, options, towers) {
+  const wideWidths = options.filter((option) => option.w > 600).map((option) => option.w);
+  const frontMin = Math.min(...towers.map((tower) => tower.depth_length + 80));
+  const frontMax = Math.max(...towers.map((tower) => tower.depth_length + 120));
+  const sideMin = Math.min(...towers.map((tower) => tower.width + 80));
+  const sideMax = Math.max(...towers.map((tower) => tower.width + 120));
+  const maxWideClear = Math.max(...options.filter((option) => option.w > 600).map((option) => option.side_clear_each_nom));
+  const minWideClear = Math.min(...options.filter((option) => option.w > 600).map((option) => option.side_clear_each_nom));
+
+  return `
+    <section class="card">
+      <div class="section-head">
+        <h2>What Changes In The Wide View</h2>
+        <p>The wall-cabinet elevation now shows every calculated rack option, not just the 600-wide baseline. The cart footprint logic is separated out below so the depth tradeoff of sideways versus front-facing towers stays explicit.</p>
+      </div>
+      <div class="summary-grid">
+        <article class="panel">
+          <h3>Wide cabinet band</h3>
+          <p class="metric">${Math.min(...wideWidths)}–${Math.max(...wideWidths)} mm</p>
+          <p class="muted">The widened set in this document runs from 752 mm to 800 mm, which still leaves ${Math.round(minWideClear)}–${Math.round(maxWideClear)} mm each side inside the 1040 mm segment.</p>
+        </article>
+        <article class="panel">
+          <h3>General trolley footprint</h3>
+          <p class="metric">${source.recommended_trolley_width_mm} mm</p>
+          <p class="muted">Use the JSON guidance as the main envelope: ${escapeHtml(source.recommended_trolley_depth_mm)}. That keeps the floor unit below the rack while protecting the laundry clearance line.</p>
+        </article>
+        <article class="panel">
+          <h3>Sideways tower depth</h3>
+          <p class="metric">${sideMin}–${sideMax} mm</p>
+          <p class="muted">Across the three reference tower cases, a sideways trolley stays comfortably within the 600D general target and buys the neatest floor plan.</p>
+        </article>
+        <article class="panel">
+          <h3>Front-facing tower depth</h3>
+          <p class="metric">${frontMin}–${frontMax} mm</p>
+          <p class="muted">Front-facing towers blow past the 600D general cart target. They only make sense if the room layout tolerates a deeper rolling cabinet.</p>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
+function renderElevations(source, options) {
+  const grouped = new Map();
+  for (const option of options) {
+    const key = option.u;
+    if (!grouped.has(key)) {
+      grouped.set(key, []);
+    }
+    grouped.get(key).push(option);
+  }
+
+  const groups = [...grouped.entries()]
+    .sort((left, right) => left[0] - right[0])
+    .map(([u, groupOptions]) => {
+      const panels = groupOptions.map((option) => `
+        <article class="elevation-card">
+          <div class="option-topline">
+            <span class="option-id" style="background:${PALETTES[option.u].accent}">${option.id}</span>
+            <span class="option-width">${option.u}U · ${option.w}W · ${option.d}D</span>
+          </div>
+          <div>
+            <p class="option-name">${escapeHtml(option.name)}</p>
+            <p class="option-source">${escapeHtml(option.source)}</p>
+          </div>
+          <div class="diagram-frame">${createElevationSvg(option, source)}</div>
+          <div class="metric-list">
+            <div><strong>Envelope:</strong> ${sizeLabel(option)} mm</div>
+            <div><strong>Cart max below:</strong> ${cartRange(option)} at 150 / 200 top clearance</div>
+            <div><strong>Side clearance:</strong> ${clearText(option.side_clear_each_nom)}</div>
+            <div><strong>Laundry clear depth:</strong> ${mm(option.clear_depth)}</div>
+          </div>
+        </article>
+      `).join("");
+
+      return `
+        <section class="group-shell">
+          <div class="group-heading">
+            <div>
+              <p class="eyebrow">${u}U line</p>
+              <h3>Nook elevation — ${u}U wall cabinet options</h3>
+            </div>
+            <p>${GROUP_COPY[u]}</p>
+          </div>
+          <div class="elevation-grid">${panels}</div>
+        </section>
+      `;
+    }).join("");
+
+  return `
+    <section class="card">
+      <div class="section-head">
+        <h2>Nook Elevation Comparison</h2>
+        <p>The main cabinet-on-wall view now mirrors the preferred envelope drawing style, but it is repeated across every calculated cabinet profile. Each panel centers the rack inside the 1040 mm segment and shows the maximum wheeled cabinet height below it using the 50 mm service gap.</p>
+      </div>
+      <div class="group-list">${groups}</div>
+    </section>
+  `;
+}
+
+function renderTowerCards(towers) {
+  const cards = towers.map((tower) => {
+    const frontMin = tower.depth_length + 80;
+    const frontMax = tower.depth_length + 120;
+    const sideMin = tower.width + 80;
+    const sideMax = tower.width + 120;
+    const frontFits = frontMax <= 600;
+    const sideFits = sideMax <= 600 && tower.depth_length <= 980;
+
+    return `
+      <article class="tower-card">
+        <div>
+          <p class="eyebrow">Tower reference</p>
+          <h3>${escapeHtml(tower.case)}</h3>
+        </div>
+        <div class="tower-figures">
+          <div class="tower-figure">
+            <h4>Front-facing room</h4>
+            ${createPlanSvg(tower.width, frontMax, "front-facing cart footprint", true)}
+            <p>Footprint range ${tower.width}W × ${frontMin}–${frontMax}D. This is the cleanest service orientation, but it pushes the trolley beyond the 600D general target.</p>
+          </div>
+          <div class="tower-figure">
+            <h4>Sideways</h4>
+            ${createPlanSvg(tower.depth_length, sideMax, "sideways cart footprint", true)}
+            <p>Footprint range ${tower.depth_length}W × ${sideMin}–${sideMax}D. This is the tightest way to keep a full tower inside the general rolling-cabinet envelope.</p>
+          </div>
+        </div>
+        <div class="status-row">
+          <span class="status-chip ${sideFits ? "status-ok" : "status-warn"}">${sideFits ? "Sideways fits 980W × 600D" : "Sideways needs a wider/deeper cart"}</span>
+          <span class="status-chip ${frontFits ? "status-ok" : "status-warn"}">${frontFits ? "Front-facing fits 600D" : "Front-facing overruns 600D"}</span>
+        </div>
+        <ul class="tower-meta">
+          <li>Case body: ${tower.depth_length}D × ${tower.width}W × ${tower.height}H.</li>
+          <li>Front-facing cart depth is calculated as case depth + 80–120 mm cable/service allowance.</li>
+          <li>Sideways cart depth is calculated as case width + 80–120 mm service allowance.</li>
+        </ul>
+      </article>
+    `;
+  }).join("");
+
+  return `
+    <section class="card">
+      <div class="section-head">
+        <h2>Wheeled Cabinet Footprints</h2>
+        <p>These panels translate the tower-reference dimensions into realistic rolling-cabinet footprints. This is the missing half of the earlier elevation view: the upper rack only changes the available cart height, while the tower orientation decides the cart depth.</p>
+      </div>
+      <div class="tower-grid">${cards}</div>
+    </section>
+  `;
+}
+
+function renderTable(options) {
+  const rows = options.map((option) => `
+    <tr>
+      <td><strong>${option.id}</strong></td>
+      <td>${escapeHtml(option.name)}</td>
+      <td>${sizeLabel(option)}</td>
+      <td>${Math.round(option.side_clear_each_nom)} mm</td>
+      <td>${option.clear_depth} mm</td>
+      <td>${option.bottom_at_topclear_150} mm</td>
+      <td>${option.cart_max_at_topclear_150_gap50} mm</td>
+      <td>${option.cart_max_at_topclear_200_gap50} mm</td>
+      <td>${escapeHtml(option.source)}</td>
+      <td class="product-links">${productLinkMarkup(option.id)}</td>
+    </tr>
+  `).join("");
+
+  return `
+    <section class="card">
+      <div class="section-head">
+        <h2>Calculated Options And Sourcing</h2>
+        <p>The table stays in the document because it is still the fastest way to compare the raw envelopes. Product links were checked on 22 April 2026. Treat the custom-width references as procurement leads rather than guaranteed drop-in matches.</p>
+      </div>
+      <div class="table-shell">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Option</th>
+              <th>External W × D × H</th>
+              <th>Side clearance each</th>
+              <th>Laundry clear depth</th>
+              <th>Cabinet bottom @150 top clear</th>
+              <th>Cart max @150</th>
+              <th>Cart max @200</th>
+              <th>Basis</th>
+              <th>Reference products</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <p class="small-note">Verify door style, fan kit, usable rail depth, and shipping dimensions before ordering. The custom-width references are there to prove market plausibility, not to promise identical enclosure details.</p>
+    </section>
+  `;
+}
+
+function renderRules(source, options, towers) {
+  const optionA2 = options.find((option) => option.id === "A2");
+  const optionB2 = options.find((option) => option.id === "B2");
+  const optionB3 = options.find((option) => option.id === "B3");
+  const optionC2 = options.find((option) => option.id === "C2");
+  const frontMax = Math.max(...towers.map((tower) => tower.depth_length + 120));
+  const sideMax = Math.max(...towers.map((tower) => tower.width + 120));
+
+  return `
+    <section class="card">
+      <div class="section-head">
+        <h2>Working Rules</h2>
+        <p>These are the main read-outs from the calculation set once the wide cabinet options are shown in the same elevation language as the original envelope sheet.</p>
+      </div>
+      <div class="rule-grid">
+        <article class="rule-card">
+          <h3>Width sweet spot</h3>
+          <p>${optionA2.w} mm still leaves ${Math.round(optionA2.side_clear_each_nom)} mm each side, and ${optionB3.w} mm still leaves ${Math.round(optionB3.side_clear_each_nom)} mm each side. That is why the widened view is focused on the 752–800 mm zone rather than stretching toward 900 mm.</p>
+        </article>
+        <article class="rule-card">
+          <h3>Height penalty is mostly a rack-height problem</h3>
+          <p>At the same width, the 9U widened options keep the cart around ${optionB2.cart_max_at_topclear_150_gap50}–${optionB3.cart_max_at_topclear_150_gap50} mm high, while the 12U deep option drops it to ${optionC2.cart_max_at_topclear_150_gap50} mm. Width changes the side clearance; rack height changes the floor unit much more aggressively.</p>
+        </article>
+        <article class="rule-card">
+          <h3>Sideways tower carts stay inside the general envelope</h3>
+          <p>The three tower references land at up to ${sideMax} mm cart depth when rotated sideways. That stays comfortably inside the 600D general trolley target, which is why sideways tower orientation remains the tidy default.</p>
+        </article>
+        <article class="rule-card">
+          <h3>Front-facing towers need a conscious depth exception</h3>
+          <p>Once rear cable allowance is added, the front-facing tower cases reach up to ${frontMax} mm depth. That moves the rolling cabinet out of the neat 600D envelope and should be treated as an explicit room-planning tradeoff, not a default.</p>
+        </article>
+        <article class="rule-card">
+          <h3>Best wide rack balance</h3>
+          <p>If the brief is a wider wall rack without giving away too much floor-unit height, ${optionB2.id} and ${optionB3.id} are the strongest candidates. They keep the widened look while preserving a cart height near ${mm(optionB2.cart_max_at_topclear_150_gap50)}.</p>
+        </article>
+        <article class="rule-card">
+          <h3>Ventilation discipline still matters</h3>
+          <p>The drawing keeps both 150 mm and 200 mm top-clearance lines visible. The 150 mm line works if the rack is actively ventilated; 200 mm is the cleaner service/heat margin if the rack ends up with heavier switching or router hardware.</p>
+        </article>
+      </div>
+    </section>
+  `;
+}
+
+function renderHeroPills(source) {
+  return `
+    <span class="pill"><strong>Wall</strong> ${mm(source.nook_width_nominal_mm)} nominal</span>
+    <span class="pill"><strong>Ceiling</strong> ${mm(source.ceiling_height_mm)}</span>
+    <span class="pill"><strong>Gap</strong> ${mm(source.service_gap_between_cabinet_and_trolley_mm)} below rack</span>
+    <span class="pill"><strong>Top clear</strong> ${source.recommended_top_clearance_mm.join(" / ")} mm</span>
+    <span class="pill"><strong>Cart width</strong> ${source.recommended_trolley_width_mm} mm</span>
+    <span class="pill"><strong>Cart depth rule</strong> ${escapeHtml(source.recommended_trolley_depth_mm)}</span>
+  `;
+}
+
+async function render() {
+  const response = await fetch("./laundry_nook_networking_wide_options.json", { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`Failed to load JSON (${response.status})`);
+  }
+
+  const data = await response.json();
+  const source = data.source_plan_dimensions;
+  const options = data.cabinet_options;
+  const towers = data.tower_reference_envelopes_mm;
+
+  document.getElementById("heroPills").innerHTML = renderHeroPills(source);
+  document.getElementById("content").innerHTML = [
+    renderSummary(source, options, towers),
+    renderElevations(source, options),
+    renderTowerCards(towers),
+    renderTable(options),
+    renderRules(source, options, towers)
+  ].join("");
+}
+
+render().catch((error) => {
+  document.getElementById("content").innerHTML = `
+    <section class="fallback">
+      <p class="eyebrow">Render failed</p>
+      <h2>Could not render the calculated layout</h2>
+      <p class="lead">The page could not load <code>laundry_nook_networking_wide_options.json</code>. Check that the JSON file is next to this HTML file and being served over HTTP. Error: ${escapeHtml(error.message)}</p>
+    </section>
+  `;
+});
+</script>
 </body>
 </html>
